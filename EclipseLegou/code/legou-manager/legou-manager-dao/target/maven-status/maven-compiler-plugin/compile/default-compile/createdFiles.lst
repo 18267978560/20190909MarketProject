@@ -1,0 +1,11 @@
+com\legou\mapper\TbItemCatMapper.class
+com\legou\mapper\TbOrderShippingMapper.class
+com\legou\mapper\TbItemMapper.class
+com\legou\mapper\TbOrderItemMapper.class
+com\legou\mapper\TbUserMapper.class
+com\legou\mapper\TbContentCategoryMapper.class
+com\legou\mapper\TbContentMapper.class
+com\legou\mapper\TbItemParamItemMapper.class
+com\legou\mapper\TbItemParamMapper.class
+com\legou\mapper\TbOrderMapper.class
+com\legou\mapper\TbItemDescMapper.class

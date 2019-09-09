@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 14 resources" deleteContents="false" description="Delete 14 resources" element1="/legou-manager-service/hs_err_pid3160.log" element10="/legou-manager/replay_pid1956.log" element11="/legou-manager/replay_pid3896.log" element12="/legou-manager/replay_pid3904.log" element13="/legou-manager/replay_pid5104.log" element14="/legou-manager/replay_pid8328.log" element2="/legou-manager-service/hs_err_pid4768.log" element3="/legou-manager-service/replay_pid3160.log" element4="/legou-manager-service/replay_pid4768.log" element5="/legou-manager/hs_err_pid1956.log" element6="/legou-manager/hs_err_pid3896.log" element7="/legou-manager/hs_err_pid3904.log" element8="/legou-manager/hs_err_pid5104.log" element9="/legou-manager/hs_err_pid8328.log" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="14" stamp="1566827153300"/>
+</session>

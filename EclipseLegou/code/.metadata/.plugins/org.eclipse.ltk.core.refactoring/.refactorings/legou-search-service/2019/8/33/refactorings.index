@@ -1,0 +1,9 @@
+1565934028265	Delete element
+1565934039977	Delete element
+1565934158293	Rename package 'com.legou.search.service'
+1565934458506	Rename resource 'applicationContext-redis.xml'
+1565934479064	Rename resource 'applicationContext-search.xml'
+1565939723737	Rename resource 'TbItemMapper.xml'
+1565939789258	Extract local variable 'selectAllItem'
+1565942543729	Rename resource 'applicationContext-server.xml'
+1566024518417	Delete element

@@ -1,0 +1,17 @@
+INDEX VERSION 1.4+D:\EclipseLegou\code\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3725278150.index
+3750036362.index
+2789307610.index
+1372214075.index
+2319299956.index
+2198977169.index
+3181531821.index
+3569248581.index
+4274316552.index
+1815324639.index
+62587188.index
+1049229004.index
+998675067.index
+1752503993.index
+3347355775.index
+2415716193.index

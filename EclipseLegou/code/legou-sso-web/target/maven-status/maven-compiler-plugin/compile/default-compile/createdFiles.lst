@@ -1,0 +1,3 @@
+com\legou\sso\controller\LoginController.class
+com\legou\sso\controller\RegisterController.class
+com\legou\sso\controller\TokenController.class

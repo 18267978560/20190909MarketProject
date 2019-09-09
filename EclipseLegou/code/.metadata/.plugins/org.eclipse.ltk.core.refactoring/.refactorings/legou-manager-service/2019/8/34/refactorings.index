@@ -1,0 +1,19 @@
+1566197101166	Extract local variable 'createConnection'
+1566197317046	Extract local variable 'createSession'
+1566197432411	Extract local variable 'createTextMessage'
+1566197484514	Extract local variable 'createQueue'
+1566197536695	Extract local variable 'createProducer'
+1566197970227	Extract local variable 'queue'
+1566198024381	Extract local variable 'createConsumer'
+1566205941546	Copy file
+1566205980306	Rename package 'com.legou.queue'
+1566206025290	Rename type 'QueueTest'
+1566208604394	Extract local variable 'bean'
+1566208802614	Extract local variable 'bean'
+1566218688677	Extract local variable 'bean'
+1566272128266	Copy file
+1566276518791	Copy file
+1566289832640	Extract local variable 'selectByPrimaryKey'
+1566290230182	Extract local variable 'hget'
+1566290543084	Extract local variable 'selectByPrimaryKey'
+1566476858166	Copy files

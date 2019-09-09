@@ -1,0 +1,7 @@
+1566809842187	Delete element
+1566897592090	Extract local variable 'selectByPrimaryKey'
+1566897702391	Extract local variable 'objectToJson'
+1566900342921	Extract local variable 'hvals'
+1566900564506	Extract local variable 'jsonToPojo'
+1566905344661	Extract local variable 'hget'
+1566905393771	Extract local variable 'jsonToPojo'

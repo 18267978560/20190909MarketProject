@@ -1,0 +1,3 @@
+com\legou\sso\service\impl\RegisterServiceImpl.class
+com\legou\sso\service\impl\TokenServiceImpl.class
+com\legou\sso\service\impl\LoginServiceImpl.class

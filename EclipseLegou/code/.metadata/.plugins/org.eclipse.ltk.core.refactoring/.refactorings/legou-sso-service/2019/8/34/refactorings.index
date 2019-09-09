@@ -1,0 +1,19 @@
+1566444878600	Delete elements
+1566444928055	Rename resource 'ItemMapper.xml'
+1566446361779	Extract local variable 'checkRegName'
+1566446962116	Extract local variable 'createTbUser'
+1566447567971	Move 2 resources to 'spring'
+1566457662736	Extract local variable 'createCriteria'
+1566458153464	Extract local variable 'selectByExample'
+1566458313393	Delete element
+1566460049521	Extract local variable 'checkUser'
+1566460351221	Extract local variable 'checkUser'
+1566460596893	Extract local variable 'insert'
+1566460650911	Extract local variable 'md5Digest'
+1566475312947	Extract local variable 'createCriteria'
+1566475402628	Extract local variable 'selectByExample'
+1566476847167	Delete elements
+1566527685045	Extract local variable 'string'
+1566528836390	Extract local variable 'jsonToPojo'
+1566553988741	Copy folders
+1566632052509	Copy folder

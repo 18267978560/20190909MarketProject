@@ -1,0 +1,15 @@
+1566809460744	Extract local variable 'data'
+1566810326573	Extract local variable 'item'
+1566812561818	Extract local variable 'cookieValue'
+1566813398573	Extract local variable 'jsonToPojo'
+1566813541133	Extract local variable 'itemFromCookie'
+1566814086187	Extract local variable 'item'
+1566819066793	Extract local variable 'image'
+1566819197966	Extract local variable 'split'
+1566895698062	Extract local variable 'attribute'
+1566899190842	Extract local variable 'cookieValue'
+1566899227422	Extract local variable 'jsonToList'
+1566900771125	Extract local variable 'itemList'
+1566967479303	Delete elements
+1566968350083	Delete elements
+1566968358371	Delete elements

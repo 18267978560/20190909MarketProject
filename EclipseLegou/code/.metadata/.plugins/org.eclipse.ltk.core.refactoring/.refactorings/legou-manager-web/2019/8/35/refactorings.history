@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;legou-manager-web&apos;&#x0D;&#x0A;- Original project: &apos;legou-manager-web&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     hs_err_pid1904.log&#x0D;&#x0A;     replay_pid1904.log" description="Delete elements" element1="hs_err_pid1904.log" element2="replay_pid1904.log" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="2" stamp="1566890455803" subPackages="false" version="1.0"/>
+</session>

@@ -1,0 +1,135 @@
+package com.legou.service.impl;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.legou.common.pojo.EasyUIDataGridResult;
+import com.legou.common.redis.JedisClientPool;
+import com.legou.common.utils.IDUtils;
+import com.legou.common.utils.JsonUtils;
+import com.legou.common.utils.LegouResult;
+import com.legou.mapper.TbItemDescMapper;
+import com.legou.mapper.TbItemMapper;
+import com.legou.pojo.TbItem;
+import com.legou.pojo.TbItemDesc;
+import com.legou.pojo.TbItemExample;
+import com.legou.service.ItemService;
+
+
+@Service
+public class ItemServiceImpl implements ItemService{
+
+	@Autowired
+	private TbItemMapper tbItemMapper;
+
+	@Autowired
+	private TbItemDescMapper tbItemDescMapper;
+
+	@Resource
+	private Destination activeMQTopic; 
+
+	@Autowired
+	private JmsTemplate jmsTemplate;
+
+
+	@Autowired
+	JedisClientPool jedisClient;
+
+	//'搜索商品详情页'，搜索出商品以后点击商品，显示出商品信息，然后返回TbItem并显示在前台的方法，有缓存
+	@Override 
+	public TbItem getItem(Long itemId) { 
+		//从缓存中取值 
+		String itemDescString= jedisClient.get(itemId+"detail");
+		//判断，如果缓存中有值的话直接返回，如果没有值的话从数据库中查找 
+		if(!(itemDescString==null)){
+			//返回值需要转回TbItemDesc类型,方法在jsonToPojo中有
+			TbItem tbItem= JsonUtils.jsonToPojo(itemDescString, TbItem.class);
+			return tbItem;
+		}
+		//通过数据库查找出tbItem
+		TbItem tbItem = tbItemMapper.selectByPrimaryKey(itemId);
+		//添加进入缓存中，key为 "TBITEM"
+		jedisClient.set(itemId+"detail", JsonUtils.objectToJson(tbItem));
+		jedisClient.expire(itemId+"detail", 3600);
+Syst		return tbItem;
+		
+	}
+
+	//'搜索商品详情页'，搜索出商品以后点击商品，显示出商品信息，然后返回TbItemDesc并显示在前台的方法，有缓存
+	@Override 
+	public TbItemDesc getItemDescById(Long itemid) { 
+		//从缓存中取值 String
+		String hget = jedisClient.get(itemid+"ITEMDESC");
+		//判断，如果缓存中有值的话直接返回，如果没有值的话从数据库中查找 
+		if(!(hget==null)){
+			//返回值需要转回TbItemDesc类型,方法在jsonToPojo中有
+			return JsonUtils.jsonToPojo(hget, TbItemDesc.class); 
+		} 
+		//通过数据库查找出itemDesc 
+		TbItemDesc itemDesc = tbItemDescMapper.selectByPrimaryKey(itemid); 
+		//添加进入缓存中，key为"ITEMDESC"
+		jedisClient.set(itemid+"ITEMDESC",JsonUtils.objectToJson(itemDesc));
+		jedisClient.expire(itemid+"ITEMDESC", 3600);
+		return itemDesc; 
+	}
+
+	//'内容管理'，后台页面中，点击内容管理，点击子节点之后显示的数据库中的信息，带有分页助手
+	@Override
+	public EasyUIDataGridResult getItemList(Integer page, Integer rows) {
+		//启动分页助手
+		PageHelper.startPage(page, rows);
+		//创建一个example对象并查询出对应的数据类型
+		TbItemExample example = new TbItemExample();
+		List<TbItem> selectByExampleList = tbItemMapper.selectByExample(example);
+		//转化成pageinfo类型
+		PageInfo<TbItem> pageInfo = new PageInfo<TbItem>(selectByExampleList);
+		//创建返回值对象
+		EasyUIDataGridResult easyUIDataGridResult = new EasyUIDataGridResult();
+		//将页与行存入对象中并返回
+		easyUIDataGridResult.setTotal(pageInfo.getTotal());
+		easyUIDataGridResult.setRows(selectByExampleList);
+		return easyUIDataGridResult;
+	}
+	
+	//'新增商品'，避免每次都要重新将数据库中的商品信息导入solr索引库中，所以新增商品的时候调用save方法保存的同时将商品的信息传入mq中
+	@Override
+	public LegouResult save(TbItem tbItem, String desc) {
+		//添加商品
+		long itemId = IDUtils.genItemId();
+		tbItem.setId(itemId);
+		tbItem.setStatus((byte) 1);
+		tbItem.setCreated(new Date());
+		tbItem.setUpdated(new Date());
+		tbItemMapper.insert(tbItem);
+
+		TbItemDesc tbItemDesc = new TbItemDesc();
+		tbItemDesc.setItemDesc(desc);
+		tbItemDesc.setItemId(itemId);
+		tbItemDesc.setCreated(new Date());
+		tbItemDesc.setUpdated(new Date());
+		tbItemDescMapper.insert(tbItemDesc);
+
+		//调用save方法的同时将itemId发送到mq上
+		jmsTemplate.send(activeMQTopic, new MessageCreator() {
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				return session.createTextMessage(Long.toString(itemId));
+			}
+		});
+		return LegouResult.ok();
+	}
+
+}

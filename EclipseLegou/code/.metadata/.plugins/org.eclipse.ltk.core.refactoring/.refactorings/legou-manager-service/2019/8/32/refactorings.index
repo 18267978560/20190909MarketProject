@@ -1,0 +1,6 @@
+1565072691831	Delete element
+1565072707145	Delete element
+1565072858739	Delete element
+1565245595576	Extract local variable 'createCriteria'
+1565245692501	Extract local variable 'selectByExample'
+1565343137457	Extract local variable 'genItemId'

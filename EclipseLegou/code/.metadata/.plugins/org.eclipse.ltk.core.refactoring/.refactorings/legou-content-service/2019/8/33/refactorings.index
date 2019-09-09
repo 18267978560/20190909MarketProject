@@ -1,0 +1,16 @@
+1565591298489	Extract local variable 'selectByExample'
+1565591520413	Extract local variable 'createCriteria'
+1565608722677	Delete element
+1565613229926	Delete element
+1565619430733	Extract local variable 'selectByPrimaryKey'
+1565621611754	Extract local variable 'selectByPrimaryKey'
+1565678447498	Extract local variable 'createCriteria'
+1565678470576	Extract local variable 'selectByExample'
+1565684713349	Copy file
+1565684746996	Delete element
+1565684819954	Copy file
+1565687145302	Extract local variable 'hset'
+1565687297931	Extract local variable 'hget'
+1565933988285	Copy folder
+1565934014351	Copy folders
+1565934442537	Copy file

@@ -1,0 +1,7 @@
+1566555118997	Extract local variable 'selectByPrimaryKey'
+1566632066680	Delete element
+1566632361756	Extract local variable 'selectByPrimaryKey'
+1566635956607	Extract local variable 'string'
+1566636114644	Extract local variable 'jsonToPojo'
+1566636152559	Extract local variable 'num2'
+1566636424243	Extract local variable 'id'
